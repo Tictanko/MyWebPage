@@ -1,4 +1,53 @@
 <!DOCTYPE html> 
+<!--三种选择符：
+上下文选择符：标签 1 标签 2 {声明}  
+   特殊的：
+         标签 1 > 标签 2（标签2必须是标签1的子元素） 标签 1 + 标签 2 标签 2 （必须紧跟在其同胞标签 1 的后面）
+         标签 1 ~ 标签 2 （标签 2 必须跟（不一定紧跟）在其同胞标签 1 后面。）
+         * 通用选择符  非子选择符section * a {} section的所有孙子元素a都会被选中
+ID和类选择符：
+   类选择符：
+      .类名
+      标签名和类选择符写在一块表示这个类的这种标签改变
+      多类选择符：
+         <p class = "JOne spearB">给元素添加了两个类，
+         选择时采用.JOne.SpearB，中间不能采用空格
+   ID选择符：
+      #ID
+      和类选择符非常类似。
+   区别：
+      ID可用于页内链接导航,ID独一无二
+      
+属性选择符：
+   属性名选择符：
+      标签名[属性名] {}
+   属性值选择符：
+      标签名[属性名="属性值"] 
+-->
+<!--伪类(一个冒号表示伪类，两个表示css3中新增的伪元素)
+   UI伪类：（元素处于某种状态时添加样式）
+      链接伪类：
+         Link 等待用户点击   :link
+         Visited 用户已经点击过 :visited
+         Hover 鼠标悬停在链接上 :hover
+         Active 链接正在被点击，按下未被释放的状态 :active
+      :focus伪类：
+         点击后会产生焦点
+      :target伪类：
+         用户点击页面中的链接，此链接指向同页面的另一个元素，则那个元素为目标可以使用此伪类
+
+
+   结构化伪类：（元素存在某种结构上的关系时添加样式）
+         :first-child和:last-child
+            :first-child 代表一组同胞元素中的第一个元素，而:last-child 则代表最后一个。
+         :nth-child
+            如li:nth-child(3) 选择一组列表项中的每个第三项。
+-->
+<!--伪元素（文档中若有实际上没有的元素）
+   ::first-letter 伪元素实现了首字母放大的功能
+   ::first-line 伪元素 可以选中文本段落等的第一行
+   ::before 和::after 伪元素 在特定元素前面或后面添加特殊内容。
+-->
 <html> 
 <head> 
  <meta http-equiv="Content-Type" content="text/html; 
@@ -6,13 +55,34 @@
  <title>HTML5 Template</title> 
  <style> 
  /* CSS 规则放在<style>标签中 */
-    p{
-        color: red;
-    } 
+   p {font-family:helvetica, sans-serif; 
+      font-size:1.2em;} 
+   .specialtext {font-style:italic;} 
+   p.specialtext {color:red;} 
+   p.specialtext span {font-weight:bold;}
+   p:hover {background-color: gray;}
+   a:visited {color: gray;}
+   input:focus {border:1px solid blue;}
+   #bottom:target {background-color: green;}
+   p::first-letter {font-size:200%;} 
+
  </style>
  </head> 
  <body> 
   <!-- HTML 元素放在<body>标签中 --> 
-    <p>this text is very important</p>
+    <p>This is about someone</p>
+ <!-- 类选择符第二个效果展示 --> 
+   <h1 class="specialtext">This is a heading with the <span>same class</span> 
+   as the second paragraph.</h1> 
+   <a href="#bottom">到JOne那里去</a>
+      <p>This tag has no class.</p> 
+      <p class="specialtext"> When a tag has a class attribute, you can target it 
+   <span>regardless</span> of its position in the hierarchy.</p>
+   <h2 class="specialtext">
+      <p>WoW She's hot</p>
+   </h2> 
+   <p id="bottom">Hi Im JOne</p>
+   <a href="#">Back to Top</a>
+   <input type="text"><br./>
  </body> 
  </html> 
