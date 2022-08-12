@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<!--
+    继承：body是所有元素的老祖宗，一些属性可以被继承如字体颜色大小，一些不可以比如边框大小等
+    层叠：（核心机制）
+      读取各个样式来源的顺序：
+            1、浏览器默认样式表
+            2、用户样式表
+            3、作者链接样式表
+            4、作者嵌入样式表
+            5、作者行类样式
+      层叠规则：
+            1、找到应用给每个元素和属性的所有声明。
+            2、按照顺序和权重排序。 空格!important 分号（;）用于加重声明的权重。
+            3、按特指度排序。特指度（specificity）其实表示一条规则有多明确。类名选择符比普通的标签选择符具有更高的特指度
+                特指度的计算：“ICE”公式计算三个值：
+                            1. 选择符中有一个 ID，就在 I 的位置上加 1；
+                            2. 选择符中有一个类，就在 C 的位置上加 1；
+                            3. 选择符中有一个元素（标签）名，就在 E 的位置上加 1；
+                            4. 得到一个三位数
+            4、顺序决定权重 如果两条规则都影响某元素的同一个属性，而且它们的特指度也相同，则位置最靠下（或后声明）的规则胜出。
+            设定的样式胜过继承的样式，如
+                                    <div id="cascade_demo">
+                                    <p id="inheritance_fact">Inheritance is <em>weak</em> in the Cascade</p> 
+                                    </div> 
+                                    设定div#cascade_demo p#inheritance_fact {color:blue;} ，em作为子元素也会变为蓝色
+                                    但是如果添加em {color:red;} ，即给em设定了样式，则变为设定的样式即红色。
+      规则声明： Css的属性值主要有：文本值，数字值（分为绝对值和相对值），颜色值。
+           对于数字值的相对值：em、ex和百分比
+                em ，表示一种字体中字母 M 的宽度，因此它的具体大小取决于你使用的字体。
+                ex ，等于给定字体中字母 x 的高度（小写字母 x 代表一种字体的字母中间部分的高度，
+                     不包括字母上、下突出的部分——如 d 和 p 上下都出头儿）
+           对于颜色值：1、采用颜色名
+                      2、十六进制颜色#RGB
+                      3、RGB颜色值  rgb(r,g,b)
+                      4. RGB 百分比值（R%, G%, B%）
+                      5. HSL (色相, 饱和度%, 亮度%) 
+                      6. Alpha 通道 RGB 和 HSL 都支持 Alpha 通道
+
+-->
+<!--定位元素
+        盒模型：（与三者有关的属性有：top、right、bottom、left）
+            边框(border):设置边框宽窄、样式和颜色
+                宽度（border-width）可以使用 thin、medium 和 thick 等文本值，也可以使用除百分比和负值之外的任何绝对值
+                样式（border-style）有 none、hidden、dotted、dashed（虚线）、solid、double、groove、ridge、inset 和 outset 等文本值。
+                颜色（border-color）可以使用任意颜色值
+            内边距(padding):边框与内容的间距
+            外边距(margin):边框与相邻元素的间距 {margin:12px 10px 6px 8px}顺时针
+                                              {margin:12px 10px 6px}哪个值缺少就用这个值相对的值代替
+        
+
+-->
+<html> 
+<head> 
+ <meta http-equiv="Content-Type" content="text/html; 
+ charset=UTF-8" /> 
+ <title>StrayKids</title> 
+ <style> 
+  p.warning {
+    color: red;
+    border: solid #F33;
+    border-width:4px 1px 1px 4px;
+  }
+ </style>
+ </head> 
+ <body> 
+    <h1>Members in SKZ</h1>
+    <p class="warning">Han also known as JOne</p>
+  
+ </body> 
+ </html> 
