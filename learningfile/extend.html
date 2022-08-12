@@ -46,8 +46,18 @@
             内边距(padding):边框与内容的间距
             外边距(margin):边框与相邻元素的间距 {margin:12px 10px 6px 8px}顺时针
                                               {margin:12px 10px 6px}哪个值缺少就用这个值相对的值代替
+          （* {margin:0; padding:0;} 此规则将所有元素的外边距和内边距都设为零了，便于在想加的地方加上需要的边距）
+                 外边距的叠加：垂直方向上的外边距会叠加,即两个外边框碰到时会叠加变成外边框最大的那个
+                              水平方向不会叠加。
+                 外边距的单位：左右边距一边用px，保证绝对的距离，而上下则采用em，可随着字体变化而变化
+            盒模型结论一：没有（就是没有设置 width 的）宽度的元素始终会扩展到填满其父元素的
+                         宽度为止。添加水平边框、内边距和外边距，会导致内容宽度减少，减少量
+                         等于水平边框、内边距和外边距的和
+                        
+            盒模型结论二：为设定了宽度的盒子添加边框、内边距和外边距，会导致盒子扩展
+                         得更宽。实际上，盒子的 width 属性设定的只是盒子内容区的宽
+                         度，而非盒子要占据的水平宽度
         
-
 -->
 <html> 
 <head> 
@@ -55,16 +65,28 @@
  charset=UTF-8" /> 
  <title>StrayKids</title> 
  <style> 
-  p.warning {
+ * {margin:0; padding:0;}
+  /*p.warning {
     color: red;
     border: solid #F33;
     border-width:4px 1px 1px 4px;
-  }
+  }*/
+ /* p {font:16px helvetica, arial, sans-serif; 
+    width:220px; border:2px solid red; 设置了边框的宽度和边框的线条和颜色
+    background-color:#caebff;
+    padding: 10px;  添加了内边框
+    margin: 10px;
+  }*/
+  p {height:50px; border:1px solid #000;
+     backgroundcolor:#fff; 
+     font-size:1em; margin:.75em 30px;
+    } 
  </style>
  </head> 
  <body> 
     <h1>Members in SKZ</h1>
     <p class="warning">Han also known as JOne</p>
-  
+    <p>Hello,Han</p>
+    <p>WOw hhhhh</p>
  </body> 
  </html> 
