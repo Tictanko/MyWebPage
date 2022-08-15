@@ -5,8 +5,22 @@
                 1、文本绕排图片:浮动非图片元素时，必须给它设定宽度
                 2、创建分栏
               围住浮动元素的三种方法：
-                  1、
--->
+                  1、为父元素添加overflow:hidden：
+                    overflow:hidden 声明的真正用途是防止包含元素被超大内容撑大。应用
+                    overflow:hidden 之后，包含元素依然保持其设定的宽度，而超大的子内容则会被容
+                    器剪切掉。除此之外，overflow:hidden 还有另一个作用，即它能可靠地迫使父元素
+                    包含其浮动的子元素
+                  2、同时浮动父元素
+                    需要用 width:100%再让 section 与浏览器容器同宽。
+                    为了强制 footer依然呆在 section 下方，要给它应用 clear:left。
+                  3、添加非浮动的清除元素
+                    添加清除元素的方式有两种：
+                            1、直接在父元素最后标记中添加
+                            2、通过给父元素添加 clearfix 类
+                        没有父元素的清除办法：给一个浮动元素应用 clear:both，强迫他位于上一个
+                                            浮动元素的下方。特殊情况下采用clearfix规则。
+
+                -->
 <html> 
 <head> 
  <meta http-equiv="Content-Type" content="text/html; 
@@ -15,26 +29,38 @@
  <style> 
  * {margin:0; padding:0;}
   
-  p {height:200px;
-     backgroundcolor:#fff; 
-     font-size:1em;
-     margin:0; border:1px solid red;
-     width: 200px;
-     float:left;
-    } 
-    /*外边距防止图片紧挨文本*/ 
-   img {float:left; margin:0 4px 4px 0;
+ section {border:1px solid blue; margin:0 0 10px 0;
+            /*overflow: hidden;*/
+            /* float:left; width:100%; */
+}
+
+   img {
        width: 30%;
+       /* float: left; */
+       float: left;
        } 
+ p {margin : 0;} 
+ footer {border:1px solid red;
+        clear:left;
+        }
+ /* .clear_me {clear:left;} */
+ /* clearfix规则 */
+ .clearfix:after { 
+ content:"."; 
+ display:block; 
+ height:0; 
+ visibility:hidden; 
+ clear:both; 
+}
  </style>
  </head> 
  <body> 
-    <h1>Members in SKZ</h1>
-    <p class="warning">Han also known as JOne</p>
-    <p>Hello,Han</p>
-    <img src="D:\code\css\MyWebPage\learningfile\Han.jpg" alt="Han" />
-    <p>WOw hhhhhan xxxxxxxxx
-    </p>
-    <p>hi</p>
+    <section class="clearfix"> 
+        <img src="D:\code\css\MyWebPage\learningfile\Han.jpg"> 
+        <p>It's fun to float.</p> 
+        <!-- <div class="clear_me"></div>  -->
+       </section> 
+       <footer> Here is the footer element that runs across the bottom of the 
+       page.</footer> 
  </body> 
  </html> 

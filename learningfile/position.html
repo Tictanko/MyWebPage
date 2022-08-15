@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+   定位(position属性)：
+       四个值：static(默认)静态定位、relative相对定位、absolute绝对定位、fixed固定定位
+                relative:处于的位置是相对于默认位置进行移动的
+                absolute：绝对定位会把元素彻底从文档流中拿出来。相对于顶级元素body的位置进行移动
+                        绝对定位元素默认的定位上下文是 body 元素   
+                fixed：和绝对定位相似，不同的是固定定位元素的定位上下文是视口（屏幕窗口），因此它不会随页面滚动而移动
+       定位上下文：绝对定位元素的任何祖先元素都可以成为它的定位上下文，只要你把相应祖先元素的 position 设定为 relative 即可
+   显示属性：
+        display属性：
+         p {display:inline;} 将块级元素变为了行内元素
+         a {display:block;} 将行类元素变为了块级元素
+         把元素的 display 设定为 none，该元素及所有包含在其中的元素，都不会在页面中显示。
+         占据的空间也会被回收。
+        visibility属性：
+         visible（默认值）
+         hidden 此时元素会隐藏，但占据的空间仍然存在
+-->             
+<html> 
+<head> 
+ <meta http-equiv="Content-Type" content="text/html; 
+ charset=UTF-8" /> 
+ <title>StrayKids</title> 
+ <style> 
+ * {margin:0; padding:0;}
+p#specialpara{
+    /* position: relative; */
+    position: absolute;
+    top:25px;
+    left: 30px;
+}
+div#outer {position: relative; width:250px; margin:50px 40px; border-top:3px solid red;} 
+div#inner {position: absolute; top:10px; left:20px; background:#ccc;} 
+ </style>
+ </head> 
+ <body> 
+<p>First Paragraph</p> 
+<p>Second Paragraph</p> d
+<p id="specialpara">Third Paragraph (with ID)</p> 
+<p>Fourth Paragraph</p> 
+<div id="outer"> 
+    <div id="inner">This is text…</div> 
+    </div>
+ </body> 
+ </html> 
